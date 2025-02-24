@@ -30,7 +30,7 @@ import VideoProductionSer from './pages/VideoProductionSer.jsx';
 import RefundPolicy from './pages/RefundPolicy.jsx';
 import TermsCondition from './pages/TermsCondition.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
-
+import TawkChat from './components/TawkChat.jsx'
 
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
     <Navbar/>
    
     <SocialLinks/>
+    <TawkChat />
     <Routes>
         <Route path="/" element={<Home />} />
         {/*the servcies */}
