@@ -4,34 +4,51 @@ import TestimonialSection from '../components/TestimonialSection';
 import ClientSection from '../components/ClientSection';
 
 export default function About() {
-  const stats = [
-    { value: 1000, unit: "Projects", description: "We Have Completed" },
-    { value: 98, unit: "%", description: "Customer Satisfaction" },
-    { value: 3, unit: "Mins", description: "Average Answer Time" }
-  ];
-
-  const [counts, setCounts] = useState(stats.map(() => 0));
-
-  useEffect(() => {
-    const intervals = stats.map((stat, index) => {
-      let currentCount = 0;
-      const step = Math.ceil(stat.value / 100);
-      return setInterval(() => {
-        currentCount += step;
-        if (currentCount >= stat.value) {
-          currentCount = stat.value;
-          clearInterval(intervals[index]);
-        }
-        setCounts(prevCounts => {
-          const newCounts = [...prevCounts];
-          newCounts[index] = currentCount;
-          return newCounts;
-        });
-      }, 20);
+  const [counters, setCounters] = useState({
+      projects: 0,
+      satisfaction: 0,
+      answerTime: 1, // Start at 1
     });
-
-    return () => intervals.forEach(interval => clearInterval(interval));
-  }, []);
+  
+    useEffect(() => {
+      const duration = 3000; // 3 seconds (same for all)
+      const intervalTime = 50; // Update every 50ms
+  
+      const targetValues = {
+        projects: 1000,
+        satisfaction: 98,
+        answerTime: 3,
+      };
+  
+      // Calculate step size per interval
+      const steps = duration / intervalTime;
+      const increment = {
+        projects: targetValues.projects / steps,
+        satisfaction: targetValues.satisfaction / steps,
+        answerTime: (targetValues.answerTime - 1) / steps, // Starts from 1
+      };
+  
+      const interval = setInterval(() => {
+        setCounters((prev) => {
+          if (
+            prev.projects >= targetValues.projects &&
+            prev.satisfaction >= targetValues.satisfaction &&
+            prev.answerTime >= targetValues.answerTime
+          ) {
+            clearInterval(interval);
+            return prev;
+          }
+  
+          return {
+            projects: Math.min(prev.projects + increment.projects, targetValues.projects),
+            satisfaction: Math.min(prev.satisfaction + increment.satisfaction, targetValues.satisfaction),
+            answerTime: Math.min(prev.answerTime + increment.answerTime, targetValues.answerTime),
+          };
+        });
+      }, intervalTime);
+  
+      return () => clearInterval(interval);
+    }, []);
 
   const breadcrumbItems = [
     { text: 'Home', link: '/' },
@@ -61,21 +78,37 @@ export default function About() {
               <div className="about-content">
                 <p>Welcome to IT Planet Software Solution, your trusted partner in digital transformation. Established with a vision to innovate and empower businesses with cutting-edge technology solutions, we specialize in providing a comprehensive suite of services tailored to meet your evolving needs.</p>
                 <p>At IT Planet, we believe in harnessing the power of technology to drive business growth and enhance customer experiences. With a team of dedicated professionals and years of industry experience, we are committed to delivering high-quality solutions that exceed expectations.</p>
-                <div className="about-countdown-area">
-                  <ul>
-                    {stats.map((stat, index) => (
-                      <li key={index} className="single-countdown">
-                        <div className="content">
-                          <div className="number">
-                            <h5 className="counter">{counts[index]}</h5>
-                            <span>{stat.unit}</span>
-                          </div>
-                          <p>{stat.description}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                 <div className="about-countdown-area">
+                <ul>
+                  <li className="single-countdown">
+                    <div className="content">
+                      <div className="number">
+                        <h5 className="counter">{Math.round(counters.projects)}</h5>
+                        <span>Projects</span>
+                      </div>
+                      <p>We Have Completed</p>
+                    </div>
+                  </li>
+                  <li className="single-countdown">
+                    <div className="content">
+                      <div className="number">
+                        <h5 className="counter">{Math.round(counters.satisfaction)}</h5>
+                        <span>%</span>
+                      </div>
+                      <p>Customer Satisfaction</p>
+                    </div>
+                  </li>
+                  <li className="single-countdown">
+                    <div className="content">
+                      <div className="number">
+                        <h5 className="counter">{Math.round(counters.answerTime)}</h5>
+                        <span>Mins</span>
+                      </div>
+                      <p>Average Answer Time</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
               </div>
             </div>
             <div className="col-lg-6">

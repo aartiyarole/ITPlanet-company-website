@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{useState} from 'react'
 import BreadcrumbSection from '../components/BreadcrumbSection';
 import DevTools from '../components/DevTools';
 import Accordion from '../components/Accordion';
+import Modal from '../components/Modal';
 
 export default function DigitalMarket() {
+    const [isModalOpen , setIsModalOpen] = useState(false);
     const breadcrumbItems = [
         { text: 'Home', link: '/' },
         { text: 'Digital Marketing Course' }
@@ -37,10 +39,7 @@ export default function DigitalMarket() {
         }
     ];
 
-    const handleApplyNow = () => {
-        // Handle apply now button click
-        // You can add your modal logic here
-    };
+    
 
     return (
         <>
@@ -85,7 +84,7 @@ export default function DigitalMarket() {
                                     className="btn btn-primary" 
                                     data-bs-toggle="modal" 
                                     data-bs-target="#exampleModal"
-                                    onClick={handleApplyNow}
+                                    onClick={()=>setIsModalOpen(true)}
                                 >
                                     Apply Now
                                 </button>
@@ -97,6 +96,7 @@ export default function DigitalMarket() {
             <div className="service-details-tools-section mb-120">
                 <DevTools />
             </div>
+            <Modal isModalOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </>
     )
 }
