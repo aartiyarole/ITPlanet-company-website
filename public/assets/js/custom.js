@@ -180,6 +180,7 @@
 
    // Scroll to top button functionality
    document.addEventListener("DOMContentLoaded", function () {
+    new WOW().init();
     let circleContainer = document.querySelector(".circle-container");
     let circlePath = document.querySelector(".circle-container path");
 
