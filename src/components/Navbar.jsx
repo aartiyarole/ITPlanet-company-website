@@ -345,7 +345,7 @@ const Navbar = () => {
                                         </NavLink>
                                     </li>
                                     <li className="menu-item-has-children">
-                                        <a className="drop-down">Video Production</a>
+                                        <a href="#" className="drop-down">Video Production</a>
                                         <ul className="sub-menu">
                                             <li>
                                                 <NavLink to="/shooting-services" className={({isActive}) => isActive ? "active" : ""}>
@@ -370,7 +370,7 @@ const Navbar = () => {
                                         </ul>
                                     </li>
                                     <li className="menu-item-has-children">
-                                        <a className="drop-down">Web Hosting</a>
+                                        <a href="#" className="drop-down">Web Hosting</a>
                                         <ul className="sub-menu">
                                             <li>
                                                 <NavLink to="/one-domain-hosting" className={({isActive}) => isActive ? "active" : ""}>
