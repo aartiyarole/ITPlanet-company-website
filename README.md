@@ -1,4 +1,6 @@
 Check out the live project here: https://itplanet-company-demo.netlify.app/ 🚀
+
+
 🚀 Excited to share my internship experience at IT Planet as a Web Developer! 🌟
 
 During my time there, I worked on HTML, CSS, Bootstrap, JavaScript, and React.js, contributing to various projects, including:
