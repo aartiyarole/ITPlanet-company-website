@@ -29,10 +29,10 @@ const Navbar = () => {
                     <div className="container d-flex align-items-center justify-content-between">
                         <div className="sidebar-menu-logo">
                             <NavLink to="/" className="logo-dark">
-                                <img alt="image" className="img-fluid" src="assets/img/IT_PlanteLogo.png" style={{height:'40px'}} />
+                                <img  className="img-fluid" alt="company logo"  src="assets/img/IT_PlanteLogo.png" style={{height:'40px'}} />
                             </NavLink>
                             <NavLink to="/" className="logo-light">
-                                <img alt="image" className="img-fluid" src="assets/img/IT_PlanteLogo.png" style={{height:'40px'}} />
+                                <img  className="img-fluid" alt="company logo" src="assets/img/IT_PlanteLogo.png" style={{height:'40px'}} />
                             </NavLink>
                         </div>
                         <div className="sidebar-menu-close" onClick={toggleSidebar}>
@@ -301,7 +301,7 @@ const Navbar = () => {
                 <div className="container d-flex flex-nowrap align-items-center justify-content-between">
                     <div className="company-logo">
                         <NavLink to="/" className="logo-dark">
-                            <img alt="image" className="img-fluid" src="assets/img/IT_PlanteLogo.png" style={{height:'40px'}} />
+                            <img alt=" company logo" className="img-fluid" src="assets/img/IT_PlanteLogo.png" style={{height:'40px'}} />
                         </NavLink>
                     </div>
                     <div className="main-menu d-lg-flex d-none">
